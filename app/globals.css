@@ -96,7 +96,12 @@
 
 /* START: Car Card styles */
 .car-card {
-  @apply flex flex-col p-6 justify-center items-start text-black-100 bg-primary-blue-100 hover:bg-white hover:shadow-md rounded-3xl;
+  @apply flex flex-col p-6 justify-center items-start text-black-100 bg-white hover:bg-primary-blue-100 hover:shadow-md rounded-3xl;
+}
+
+/* Ensure sufficient contrast between text and background on hover */
+.car-card:hover {
+  background-color: #f0f5ff; /* Lighter shade of primary blue */
 }
 
 .car-card__content {
@@ -138,6 +143,16 @@
 .car-card__btn-container {
   @apply hidden group-hover:flex absolute bottom-0 w-full z-10;
 }
+/* Ensure sufficient contrast for car card content */
+.car-card.high-contrast {
+  @apply flex flex-col p-6 justify-center items-start text-high-contrast bg-white hover:bg-primary-blue-100 hover:shadow-md rounded-3xl;
+}
+
+/* Ensure sufficient contrast for car card icon text */
+.car-card.high-contrast .car-card__icon-text {
+  @apply text-[14px] leading-[17px] text-high-contrast font-bold;
+}
+
 /* END: Car Card styles */
 
 /* START: Car Details styles */
@@ -225,3 +240,9 @@
   @apply cursor-default select-none py-2 pl-10 pr-4;
 }
 /* END: search manufacturer styles */
+
+@layer utilities {
+  .text-high-contrast {
+    color: black; /* Adjust the text color to your preference for better contrast */
+  }
+}
